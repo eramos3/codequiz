@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-    <link rel="sylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
     <header class="header">
         <div>
@@ -21,23 +23,20 @@
         </div>
     </section>
     <main>
-        <div>
-            <h3 class="questions" id="question">Quesion Goes Here</h3>
-            <ul>
-                <li>choice 1</li>
-                <li>choice 2</li>
-                <li>choice 3</li>
-                <li>choice 4</li>
+        <div  class="questions">
+            <h3 >Question Goes Here</h3>
+            <ul class="choices">
+                <li><button id="a">A</button></li>
+                <li><button id="b">B</button></li>
+                <li><button id="c">C</button></li>
+                <li><button id="d">D</button></li>
             </ul>
         </div>
         <div class="choice" id="choice-value">
             <h3>Shows Right or Wrong Choice</h3>
         </div>
     </main>
-    <footer>
-        <h4>GOOD LUCK!</h4>
-    </footer>
-
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>

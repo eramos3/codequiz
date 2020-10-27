@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark-purple);
+
+}
+
+:root {
+    --dark-purple: #62237d;
+    --light-purple: #cd86ec;
+}
+/* styles header  */
+.header {
+    background-color: var(--light-purple);
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+    
+}
+
+h1 {
+    font-size: 50px;
+    margin: 0
+}
+
+.timer {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* styles high score section */
+
+.scores {
+    margin: 50px 0 20px 40px;
+    font-size: 14px;
+}
+
+/* styles question section */
+
+.questions {
+    background-color: #eec2ff;
+    border: solid var(--dark-purple) 5px;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    margin: 50px auto;
+    padding-left: 30px;
+    height: 300px;
+    
+}
+
+.questions h3 {
+    font-size: 30px;
+}
+
+ul { 
+    list-style: none;
+    font-size: 20px;
+}
+
+li {
+    margin: 7px;
+    font-weight: bold;
+    
+}
+
+/* styles choices */
+
+.choices li button {
+    width: 250px;
+    border: none;
+    background: var(--light-purple);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 16px;
+    border-radius:10px;
+    
+}
+
+/* styles answer indicator */
+
+.choice {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin: 70px auto;
+    width: 50%;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.choice h3 {
+    color: var(--light-purple);
+    font-size: xx-large;
+    text-decoration: underline;
+    font-stretch: ultra-expanded;
+}
