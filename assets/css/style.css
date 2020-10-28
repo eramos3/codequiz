@@ -34,10 +34,54 @@ h1 {
 
 /* styles high score section */
 
-.scores {
+.scores button {
     margin: 50px 0 20px 40px;
     font-size: 14px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    width: 15%;
 }
+
+.fist-display {
+    background-color: #eec2ff;
+    border: solid var(--dark-purple) 5px;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    margin: 50px auto;
+    padding-left: 30px;
+    height: 300px;
+    
+}
+button:hover {
+    background-color: var(--light-purple);
+}
+.fist-display h3 {
+    font-size: 30px;
+}
+
+.fist-display p {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.fist-display button{
+    width: 250px;
+    border: none;
+    background: var(--light-purple);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 16px;
+    border-radius:10px;
+    font-weight: bold;
+}
+
 
 /* styles question section */
 
@@ -56,6 +100,10 @@ h1 {
     
 }
 
+.questions button:hover {
+    background-color: var(--dark-purple);
+    color: var(--light-purple);
+}
 .questions h3 {
     font-size: 30px;
 }
@@ -81,6 +129,7 @@ li {
     padding: 15px 0;
     font-size: 16px;
     border-radius:10px;
+    font-weight: bold;
     
 }
 
@@ -102,3 +151,170 @@ li {
     text-decoration: underline;
     font-stretch: ultra-expanded;
 }
+
+.saved-score {
+    background-color:white;
+    border: solid var(--dark-purple) 5px;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    margin: 50px auto;
+    padding-left: 30px;
+    height: 200px;
+    
+}
+
+.score-screen {
+    background-color:white;
+    border: solid var(--dark-purple) 5px;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    margin: 50px auto;
+    padding-left: 30px;
+    height: 200px;
+}
+
+@media screen and (max-width: 980px) {
+    .header {
+        
+        height: auto;
+        justify-content: space-around;
+    }
+
+    .header h1 {
+        font-size: 3em;
+    }
+
+    .timer {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .scores {
+        font-size: 1em;
+    }
+
+    .scores button {
+        font-size: .8em;
+        width: 20%;
+    }
+    .questions, .score-screen, .saved-score, .fist-display{
+        width: 80%;
+        margin: 50px auto;
+        padding-left: 30px;
+        height: 300px;
+        
+    }
+
+    .questions h3, .saved-score h4 {
+        font-size: 1.5em;
+    }
+    
+    /* styles choices */
+    
+    .choices li button {
+        width: 200px;
+        font-size: 1rem;
+        padding: 5%;
+        
+    }
+
+    .saved-score button, .score-screen button {
+        width: 200px;
+        font-size: 1em;
+    }
+
+  }
+  /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
+  @media screen and (max-width: 768px) {
+    .header {
+        height: auto;
+        justify-content: space-around;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .timer {
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    .scores button {
+        width: 30%;
+    }
+
+    .fist-display p {
+        font-size: smaller;
+    }
+
+  }
+  
+  /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+  @media screen and (max-width: 575px) {
+  
+    .header {
+        flex-flow: column;
+        height: auto;
+        justify-content: space-around;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .timer {
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.7;
+    }
+
+    .scores button {
+        font-size: .6em;
+        width: 50%;
+        margin: 20px 0 10px 5px;
+    }
+    .questions, .score-screen, .saved-score, .fist-display{
+        width: 90%;
+        margin: 50px auto;
+        padding: 0;
+        text-align: center;
+        
+    }
+
+    .saved-score input {
+        width: 60%;
+        margin-bottom: 10px;
+    }
+
+    .score-screen button {
+        margin-bottom: 10px;
+    }
+
+    .choices li button {
+        width: 200px;
+        font-size: .6em;
+        padding: 5%;
+        
+    }
+
+    .choice {
+        justify-content: center;
+        margin: 0 auto;
+        width: 90%;
+       
+    }
+    
+    .choice h3 {
+        font-size: large;
+    }
+
+  }
