@@ -13,15 +13,15 @@
         <div>
             <h1>Code Quiz</h1>
         </div>
-        <div class="timer" id="set-timer">
-            <p>Timer Goes Here</p>
+        <div class="timer" >
+            <p>Time: <span id="set-timer"></span> seconds</p>
         </div>
     </header>
     <main>
         <section class="scores" id="view-scores">
             <div>
                 <button>
-                    <h2>View High Scores</h2>
+                    <h2>View High Score</h2>
                 </button>
             </div>
         </section>
@@ -33,12 +33,12 @@
             <button id="start">Start Quiz</button>
         </div>
         <div class="questions">
-            <h3>Question Goes Here</h3>
+            <h3 id = "current-question">Question Goes Here</h3>
             <ul class="choices">
-                <li><button id="a">A</button></li>
-                <li><button id="b">B</button></li>
-                <li><button id="c">C</button></li>
-                <li><button id="d">D</button></li>
+                <li><button id="a" >A</button></li>
+                <li><button id="b" >B</button></li>
+                <li><button id="c" >C</button></li>
+                <li><button id="d" >D</button></li>
             </ul>
         </div>
         <div class="choice" id="choice-value">
