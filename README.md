@@ -21,4 +21,4 @@ git clone git@github.com:eramos3/codequiz.git
 
 ![Code Quiz Screenshot](./assets/images/codequiz.png)
 
-<!-- [Code Quiz page]() -->
+[Code Quiz page](https://eramos3.github.io/codequiz/)
