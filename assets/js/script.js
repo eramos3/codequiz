@@ -7,6 +7,7 @@ var displayFour = document.querySelector(".score-screen");
 var showQuestion = document.querySelector("#current-question");
 var rightWrong = document.querySelector("#choice-value");
 var saveUser = document.querySelector("#save-score");
+var savedScoreScreen = document.querySelector("#saved-score");
 var userInitials = document.querySelector("#initials");
 var userHighscore = document.querySelector("#score");
 var viewScoreBtn = document.querySelector("#view-scores");
@@ -14,6 +15,7 @@ var viewScoreBtn = document.querySelector("#view-scores");
 var finalScore = document.querySelector("#final-score")
 // sets seconds to 75
 var seconds = 75;
+// name of timeout function, won't work if i don't define it first
 var decrease;
 
 // choice variables to replace answer choices
@@ -96,6 +98,7 @@ var setUp = function () {
 setUp();
 
 var startQuiz = function () {
+    viewScoreBtn.setAttribute("style", "display:none");
     displayOne.setAttribute("style", "display:none");
     displayTwo.removeAttribute("style", "display:none");
     // starts countdown
@@ -107,7 +110,7 @@ var startQuiz = function () {
 // made function to get question from array 
 var displayQuestion = function () {
     if (currentQuestion > (questions.length - 1)) {
-        // stopCount();
+        stopCount();
         endQuiz();
     } else {
         for (i = 0; i < questions.length; i++) {
@@ -118,9 +121,6 @@ var displayQuestion = function () {
             choiceD.textContent = questions[currentQuestion].d;
         }
     }
-
-
-
 };
 // sets current question to
 var currentQuestion = 0;
@@ -141,18 +141,19 @@ var checkChoice = function (event) {
 
 var endQuiz = function () {
     // makes left over seconds equal to the score
-    var score = seconds;    
+    var score = seconds;
     // hide question display and show input field for initials
     displayTwo.setAttribute("style", "display:none");
     displayThree.removeAttribute("style", "display:none");
     rightWrong.setAttribute("style", "display:none");
     finalScore.textContent = score;
+    getHighScore();
 
 };
 
 // selected timer id, and made function to start countdown
 var countDown = document.querySelector("#set-timer");
-
+var timerOn = 0;
 var counter = function () {
     countDown.textContent = seconds;
     seconds = seconds - 1;
@@ -161,20 +162,19 @@ var counter = function () {
 };
 
 var count = function () {
-    if (seconds > 0) {
+    if (!timerOn) {
+        timerOn = 1;
         counter();
     }
-    stopCount();
 }
 
 var stopCount = function () {
-    // when seconds reach 0 end the timer and notify time is over.
-    if (seconds <= 0) {
-        // clearTimeout(decrease);
-        window.alert("Time is Up");
-        // hide question display and show input field for initials
-        endQuiz();
-    }
+    // clearTimeout(decrease);
+    clearTimeout(decrease);
+    timerOn = 0;
+    // hide question display and show input field for initials
+    endQuiz();
+
 }
 
 // local storage code
@@ -213,15 +213,15 @@ var saveScore = function (event) {
     displayFour.removeAttribute("style", "display:none");
 }
 
-var viewScore = function(){
+var viewScore = function () {
     displayOne.setAttribute("style", "display:none");
     displayTwo.setAttribute("style", "display:none");
     displayThree.setAttribute("style", "display:none");
     displayFour.removeAttribute("style", "display:none");
-    rightWrong.setAttribute("style", "display:none");
+    savedScoreScreen.setAttribute("style", "display:none");
+    stopCount();
     getHighScore();
 }
-
 
 // event listeners go here
 startBtn.addEventListener("click", startQuiz);
@@ -231,4 +231,3 @@ viewScoreBtn.addEventListener("click", viewScore)
 // choiceB.addEventListener("click", checkChoice);
 // choiceC.addEventListener("click", checkChoice);
 // choiceD.addEventListener("click", checkChoice);
-

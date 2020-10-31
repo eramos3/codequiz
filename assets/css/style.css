@@ -286,8 +286,11 @@ li {
         width: 90%;
         margin: 50px auto;
         padding: 0;
-        text-align: center;
-        
+        text-align: center;        
+    }
+
+    .questions h3 {
+        font-size: 1em;
     }
 
     .saved-score input {
