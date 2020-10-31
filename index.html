@@ -18,14 +18,14 @@
         </div>
     </header>
     <main>
-        <section class="scores" id="view-scores">
+        <section class="scores">
             <div>
-                <button>
+                <button id="view-scores">
                     <h2>View High Score</h2>
                 </button>
             </div>
         </section>
-        <div class="fist-display">
+        <div class="first-display">
             <h3>Coding Quiz Challenge</h3>
             <p>Try to answer the following code-related questions within the time limit.<br>
                 Keep in mind that incorrect answers will penalize your score/time by ten seconds!
@@ -35,10 +35,10 @@
         <div class="questions">
             <h3 id = "current-question">Question Goes Here</h3>
             <ul class="choices">
-                <li><button id="a" >A</button></li>
-                <li><button id="b" >B</button></li>
-                <li><button id="c" >C</button></li>
-                <li><button id="d" >D</button></li>
+                <li><button id="a" onclick="checkChoice('a')">A</button></li>
+                <li><button id="b" onclick="checkChoice('b')">B</button></li>
+                <li><button id="c" onclick="checkChoice('c')">C</button></li>
+                <li><button id="d" onclick="checkChoice('d')">D</button></li>
             </ul>
         </div>
         <div class="choice" id="choice-value">
@@ -46,17 +46,18 @@
         </div>
         <div class="saved-score">
             <h4>All Done!</h4>
-            <p>Your final score is <span>0</span></p>
+            <p>Your final score is <span id="final-score">0</span></p>
             <div>
-                <input type="text" name="highscore" placeholder="Enter initials" maxlength="3">
+                <input type="text" name="initial" id = "initial" placeholder="Enter initials" maxlength="3">
                 <button type="submit" id="save-score">Submit</button>
             </div>
         </div>
         <div class="score-screen">
-            <h4>High Scores</h4>
-            <p><span>Initials: 0</span></p>
+            <h4>High Score</h4>
+            <p><span id="initials">Initials: 0</span></p>
+            <p><span id="score">Score</span></p>
             <div>
-                <button type="submit" id="start-quiz">Go Back</button>
+                <a href="index.html"><button id="start-quiz">Go Back</button></a>
                 <button type="submit" id="reset-quiz">Clear High Scores</button>
             </div>
         </div>

@@ -1,12 +1,22 @@
 // variables to select certain displays
-var displayOne = document.querySelector(".fist-display");
+var startBtn = document.querySelector("#start");
+var displayOne = document.querySelector(".first-display");
 var displayTwo = document.querySelector(".questions");
 var displayThree = document.querySelector(".saved-score");
 var displayFour = document.querySelector(".score-screen");
 var showQuestion = document.querySelector("#current-question");
-var rightWrong = document.querySelector("#choice-value")
+var rightWrong = document.querySelector("#choice-value");
+var saveUser = document.querySelector("#save-score");
+var userInitials = document.querySelector("#initials");
+var userHighscore = document.querySelector("#score");
+var viewScoreBtn = document.querySelector("#view-scores");
+// variable to select final score
+var finalScore = document.querySelector("#final-score")
+// sets seconds to 75
+var seconds = 75;
+var decrease;
 
-// choice variables
+// choice variables to replace answer choices
 var choiceA = document.querySelector("#a");
 var choiceB = document.querySelector("#b");
 var choiceC = document.querySelector("#c");
@@ -20,7 +30,7 @@ var questions = [
         b: "false",
         c: "don't know",
         d: "skip",
-        answer: a
+        answer: "a"
     },
 
     {
@@ -90,62 +100,135 @@ var startQuiz = function () {
     displayTwo.removeAttribute("style", "display:none");
     // starts countdown
     count();
-    // gets questions from array
-    currentQuestion = 0;
-    for(i=0; i<questions.length;i++){
-        showQuestion.textContent = currentQuestion[i].question;
-        choiceA.textContent = questions[i].a;
-        choiceB.textContent = questions[i].b;
-        choiceC.textContent = questions[i].c;
-        choiceD.textContent = questions[i].d;
-        console.log(showQuestion.textContent)
-
-        // choiceA.onclick = function(){
-        //     showQuestion.textContent = questions[1].question;
-            
-        // }
-
-        // questions[0].a.addEventListener('mousedown', function(){
-        //     questions[0].
-        // });
-        
-        // var checkChoice = function(){
-        //     if(choiceA ==questions[i].answer||choiceB==questions[i].answer||choiceC==questions[i].answer||choiceD==questions[i].answer) {
-        //         rightWrong.textContent = "Correct";
-        //     } else {
-        //         rightWrong.textContent = "Wrong";
-        //         seconds = seconds - 20;
-        //     };
-        // }
-    }
+    // gets question from array
+    displayQuestion();
 };
 
+// made function to get question from array 
+var displayQuestion = function () {
+    if (currentQuestion > (questions.length - 1)) {
+        // stopCount();
+        endQuiz();
+    } else {
+        for (i = 0; i < questions.length; i++) {
+            showQuestion.textContent = questions[currentQuestion].question;
+            choiceA.textContent = questions[currentQuestion].a;
+            choiceB.textContent = questions[currentQuestion].b;
+            choiceC.textContent = questions[currentQuestion].c;
+            choiceD.textContent = questions[currentQuestion].d;
+        }
+    }
+
+
+
+};
+// sets current question to
+var currentQuestion = 0;
+
+// made function to check the on click button with the value of the answer of each question
+var checkChoice = function (event) {
+    if (event == questions[currentQuestion].answer) {
+        rightWrong.textContent = "Correct";
+        currentQuestion++;
+        displayQuestion();
+    } else {
+        rightWrong.textContent = "Wrong";
+        seconds = seconds - 20;
+        currentQuestion++;
+        displayQuestion();
+    };
+}
+
 var endQuiz = function () {
+    // makes left over seconds equal to the score
+    var score = seconds;    
     // hide question display and show input field for initials
     displayTwo.setAttribute("style", "display:none");
     displayThree.removeAttribute("style", "display:none");
     rightWrong.setAttribute("style", "display:none");
+    finalScore.textContent = score;
+
 };
 
-// selected timer id, set timer to 75 sec and made function to start countdown
-var seconds = 75;
+// selected timer id, and made function to start countdown
 var countDown = document.querySelector("#set-timer");
-countDown.textContent = seconds;
-var count = function () {
-    var decrease = setInterval(function () {
-        seconds = seconds - 1;
-        countDown.textContent = seconds;
-        // when seconds reach 0 end the timer and notify time is over.
-        if (seconds <= 0) {
-            clearInterval(decrease);
-            window.alert("Time is Up");
-            // hide question display and show input field for initials
-            endQuiz();
-        }
 
+var counter = function () {
+    countDown.textContent = seconds;
+    seconds = seconds - 1;
+    decrease = setTimeout(counter, 1000);
 
-    }, 1000);
 };
+
+var count = function () {
+    if (seconds > 0) {
+        counter();
+    }
+    stopCount();
+}
+
+var stopCount = function () {
+    // when seconds reach 0 end the timer and notify time is over.
+    if (seconds <= 0) {
+        // clearTimeout(decrease);
+        window.alert("Time is Up");
+        // hide question display and show input field for initials
+        endQuiz();
+    }
+}
+
+// local storage code
+var getHighScore = function () {
+    // gets last initial and score from local storage
+    var initial = localStorage.getItem("initial");
+    var highscore = localStorage.getItem("highscore");
+
+    // if null, return early
+    if (initial === null || highscore === null) {
+        return;
+    }
+    // set text of initial span and highscore span using local storage values
+    userInitials.textContent = initial;
+    userHighscore.textContent = highscore;
+    console.log(userHighscore.textContent);
+}
+
+// save highscore function
+var saveScore = function (event) {
+    event.preventDefault();
+    var initial = document.querySelector("#initial").value;
+    var highscore = document.querySelector("#final-score").textContent;
+    console.log(highscore);
+
+    if (initial === "") {
+        alert("Initials cannot be blank");
+    } else {
+        // save initial and score to localstorage
+        localStorage.setItem("initial", initial);
+        localStorage.setItem("highscore", highscore);
+        // show last high score
+        getHighScore();
+    }
+    displayThree.setAttribute("style", "display:none");
+    displayFour.removeAttribute("style", "display:none");
+}
+
+var viewScore = function(){
+    displayOne.setAttribute("style", "display:none");
+    displayTwo.setAttribute("style", "display:none");
+    displayThree.setAttribute("style", "display:none");
+    displayFour.removeAttribute("style", "display:none");
+    rightWrong.setAttribute("style", "display:none");
+    getHighScore();
+}
+
 
 // event listeners go here
-displayOne.addEventListener("click", startQuiz)
+startBtn.addEventListener("click", startQuiz);
+saveUser.addEventListener("click", saveScore);
+viewScoreBtn.addEventListener("click", viewScore)
+// choiceA.addEventListener("click", checkChoice);
+// choiceB.addEventListener("click", checkChoice);
+// choiceC.addEventListener("click", checkChoice);
+// choiceD.addEventListener("click", checkChoice);
+
