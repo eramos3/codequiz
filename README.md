@@ -17,8 +17,8 @@ THEN I can save my initials and score<br>
 ```
 git clone git@github.com:eramos3/codequiz.git
 ```
-<!-- [working deployed link recording]() -->
+[working deployed link recording](https://drive.google.com/file/d/1JJv77QrIYVBU3cBpaX3sdKIqVI51KBN6/view)
 
-<!-- ![Code Quiz Screenshot](./assets/images/codequiz.png) -->
+![Code Quiz Screenshot](./assets/images/codequiz.png)
 
-<!-- [PasswordGenerator page]() -->
+<!-- [Code Quiz page]() -->
